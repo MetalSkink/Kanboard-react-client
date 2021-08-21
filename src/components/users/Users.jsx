@@ -3,18 +3,18 @@ import React from "react";
 import { useForm } from "../../hooks/useForm";
 
 export const Users = () => {
-  const initialForm = {
-    name: "",
-    user: "",
-    email: "",
-  };
-
   const handleCreateUser = (e) => {
     e.preventDefault();
     console.log(formValues);
   };
 
-  const [formValues, handleInputChange] = useForm(initialForm);
+  const [formValues, handleInputChange] = useForm({
+      name: '',
+      user: '',
+      email: ''
+  });
+
+  const {name, user, email } = formValues;
 
   return (
     <Container maxWidth="sm">
@@ -23,18 +23,21 @@ export const Users = () => {
       <Paper>
         <form noValidate autoComplete="off" onSubmit={handleCreateUser}>
           <Input 
-                defaultValue="User" 
-                fullWidth 
-                onChange={handleInputChange} />
-          <Input 
-                defaultValue="Name" 
-                fullWidth 
-                onChange={handleInputChange} />
-          <Input 
-                defaultValue="Email"
                 fullWidth
+                name="user"
+                value={user} 
                 onChange={handleInputChange} />
-        <Button color="primary" variant="outlined">
+          <Input 
+                fullWidth
+                name="name"
+                value={name}
+                onChange={handleInputChange} />
+          <Input 
+                fullWidth
+                onChange={handleInputChange} 
+                name="email"
+                value={email}/>
+        <Button color="primary" variant="contained" type="submit">
             Crear Usuario
         </Button>
         </form>

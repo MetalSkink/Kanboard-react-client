@@ -1,4 +1,4 @@
-import { AppBar, Box, Container, CssBaseline, Divider, Drawer, Grid, IconButton, List, Toolbar, Typography, Button, Paper } from '@material-ui/core'
+import { AppBar, Box, Container, CssBaseline, Divider, Drawer, IconButton, List, Toolbar, Typography, Button, Paper } from '@material-ui/core'
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import MenuIcon from '@material-ui/icons/Menu';
 import MeetingRoomIcon from '@material-ui/icons/MeetingRoom';
@@ -7,8 +7,7 @@ import clsx from 'clsx';
 import { Link } from 'react-router-dom';
 import { mainListItems, secondaryListItems } from './listItems';
 import useStyles from './styles';
-import { Board } from '../board/Board';
-import { Users } from '../users/Users';
+import { DashboardRouter } from '../../routers/DashBoardRouter';
 
 function Copyright() {
     return (
@@ -73,13 +72,9 @@ export const Dashboard = () => {
             </Drawer>
             <main className={classes.content}>
                 <div className={classes.appBarSpacer} />
-                <Container maxWidth="lg" className={classes.container}>
+                <Container maxWidth={false} className={classes.container}>
                     <Paper>
-                        <Grid container spacing={3}>
-                            {/* Chart */}
-                            <Board />
-                            <Users />
-                        </Grid>
+                        <DashboardRouter/>                        
                         <Box pt={4}>
                             <Copyright />
                         </Box>

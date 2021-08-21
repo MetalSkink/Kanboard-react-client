@@ -1,23 +1,24 @@
 import React from 'react'
 import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
-import { LoginScreen } from '../components/auth/LoginScreen'
-import { Dashboard } from '../components/dashboard/Dashboard'
+import { Board } from '../components/board/Board'
+import { Users } from '../components/users/Users'
 
-export const AppRouter = () => {
+export const DashboardRouter = () => {
     return (
         <Router>
             <div>
                 <Switch>
                     <Route
-                        path="/auth"
-                        component={LoginScreen}/>
+                        path="/dashboard/board"
+                        exact
+                        component={Board}/>
                         {/* isAuthenticated={ isLoggedIn }/> */}
                     <Route
+                        path="/dashboard/users"
                         exact
-                        path="/dashboard"
-                        component={Dashboard}/>
+                        component={Users}/>
                         {/* isAuthenticated={ isLoggedIn }/> */}
-                    <Redirect to="/dashboard" />
+                    <Redirect to="/dashboard/board" />
                 </Switch>
             </div>
         </Router>
